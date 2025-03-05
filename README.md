@@ -4,13 +4,13 @@ This project provides a local setup of Apache Airflow (version 2.10.5) using Doc
 
 ## Folder Structure
 
-airflow-docker/ 
-├── docker-compose.yaml 
-├── README.md 
-├── dags/ 
-│ └── example_dag.py 
-└── plugins/ 
-└── init.py
+airflow-docker/ <br>
+├── docker-compose.yaml <br>
+├── README.md <br>
+├── dags/ <br>
+│ └── example_dag.py <br>
+└── plugins/ <br>
+└── init.py<br>
 
 ## Requirements
 
