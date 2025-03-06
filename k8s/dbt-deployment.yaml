@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: dbt
-        # Updated the image reference to the new repository with a valid tag.
-        # Change "1.9-bigquery" to the tag that matches your requirements.
         image: xemuliam/dbt:1.9-bigquery
         command: ["sleep", "infinity"]
+        ports:
+          - containerPort: 7070  # The port on which the container will listen

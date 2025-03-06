@@ -70,6 +70,7 @@ kubectl logs superset-54759c54fb-kfhdh
 | Service         | Description                   | URL                      | Working? |
 |-----------------|-------------------------------|--------------------------|----------|
 | PostgreSQL      | Airflow Metadata Database     | `localhost:5432`         | True     |
+| DBT             | Data Build Tool               | `localhost:2376`         | True    |
 | Airflow Web UI  | Workflow Management           | `http://localhost:8080`  | True     |
 | MinIO Console   | S3 Storage Management         | `http://localhost:9001`  | True     |
 | MinIO API       | S3-Compatible API             | `http://localhost:9000`  | True     |
