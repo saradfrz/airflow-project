@@ -59,7 +59,7 @@ kubectl logs <superset_pod_name>
 ```
 
 ```sh
-kubectl describe pod superset-7d6c7ccc88-q9vl2
+kubectl describe pod dbt-6cb67fffb4-ppszz
 kubectl logs superset-54759c54fb-kfhdh 
 
 ```
@@ -70,6 +70,7 @@ kubectl logs superset-54759c54fb-kfhdh
 | Service         | Description                   | URL                      | Working? |
 |-----------------|-------------------------------|--------------------------|----------|
 | PostgreSQL      | Airflow Metadata Database     | `localhost:5432`         | True     |
+| DBT             | Data Build Tool               | `localhost:2376`         | True    |
 | Airflow Web UI  | Workflow Management           | `http://localhost:8080`  | True     |
 | MinIO Console   | S3 Storage Management         | `http://localhost:9001`  | True     |
 | MinIO API       | S3-Compatible API             | `http://localhost:9000`  | True     |
@@ -96,7 +97,6 @@ The system is deployed in a hybrid model using both Docker Compose and Kubernete
 - Implement CI/CD pipeline.
 - Add monitoring with Prometheus & Grafana.
 - Expand with additional machine learning pipelines.
-
 
 
 ## Contributors
