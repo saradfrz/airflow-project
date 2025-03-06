@@ -64,13 +64,12 @@ kubectl logs superset-54759c54fb-kfhdh
 
 ```
 
-## Services & Endpoints
 
 ## Services & Endpoints
 | Service         | Description                   | URL                      | Working? |
 |-----------------|-------------------------------|--------------------------|----------|
 | PostgreSQL      | Airflow Metadata Database     | `localhost:5432`         | True     |
-| DBT             | Data Build Tool               | `localhost:2376`         | True    |
+| DBT             | Data Build Tool               | `localhost:2376`         | True     |
 | Airflow Web UI  | Workflow Management           | `http://localhost:8080`  | True     |
 | MinIO Console   | S3 Storage Management         | `http://localhost:9001`  | True     |
 | MinIO API       | S3-Compatible API             | `http://localhost:9000`  | True     |
@@ -78,7 +77,7 @@ kubectl logs superset-54759c54fb-kfhdh
 | Kafka           | Event Streaming Broker        | `http://localhost:9092`  | False    |
 | Metabase        | BI and Data Exploration       | `http://localhost:30300` | True     |
 | Apache Superset | Advanced Data Visualization   | `http://localhost:30088` | True     |
-| Docker Proxy    | Docker Daemon Proxy           | `http://localhost:2376`  | False    |
+| Docker Proxy    | Docker Daemon Proxy           | `http://localhost:2376`  | True     |
 
 
 ## Architecture Overview

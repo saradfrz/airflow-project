@@ -324,3 +324,22 @@ File Path                          PID    Runtime      # DAGs    # Errors  Last 
 /opt/airflow/dags/even_or_odd.py                            1           0  0.08s           2025-03-06T20:35:01                      12
 /opt/airflow/dags/stock_market.py                           1           0  0.07s           2025-03-06T20:35:01                      12
 ================================================================================
+[2025-03-06T20:35:45.111+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+---------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/even_or_odd.py                            1           0  0.07s           2025-03-06T20:35:32                      12
+/opt/airflow/dags/stock_market.py                           1           0  0.06s           2025-03-06T20:35:32                      12
+================================================================================
+[2025-03-06T20:36:18.037+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+---------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/even_or_odd.py                            1           0  0.07s           2025-03-06T20:36:03                      12
+/opt/airflow/dags/stock_market.py                           1           0  0.06s           2025-03-06T20:36:03                      12
+================================================================================
+[2025-03-06T20:36:30.332+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
