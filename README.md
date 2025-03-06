@@ -1,4 +1,7 @@
-# Data Pipeline and Analytics Platform
+# Data Forge
+
+<img src="img/data-forge.svg" alt="Data Forge" class="light-mode-only">
+<img src="img/data-forge-dark-mode.svg" alt="Data Forge" class="dark-mode-only">
 
 This project sets up a complete data pipeline and analytics platform using Docker Compose and Kubernetes. The platform includes data ingestion, transformation, storage, and visualization tools.
 
