@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,22 +22,43 @@ spec:
         - name: SUPERSET_ENV
           value: "production"
         - name: SUPERSET_DATABASE_URI
-          value: "postgresql://superset:superset@postgres:5432/superset"
-        - name: SUPERSET_CONFIG_PATH  # ✅ Explicitly set the config file path
-          value: "/etc/superset/superset_config.py"
+          value: "postgresql+psycopg2://superset:superset@host.docker.internal:5432/superset"
+        - name: SUPERSET_CONFIG_PATH
+          value: "/etc/superset"
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:
               name: superset-secret
               key: secret_key
+        - name: PORT
+          value: "8088"
         volumeMounts:
-          - name: superset-config
-            mountPath: /etc/superset  # ✅ Mounting the file
-            subPath: superset_config.py  # ✅ Ensuring it's a file
-      volumes:
         - name: superset-config
-          configMap:
-            name: superset-config
+          mountPath: /etc/superset
+          subPath: superset_config.py
+        # The command initializes the DB, creates an admin user, and starts the server.
+        # Note: Adjust the command if necessary for idempotence and production use.
+        command:
+          - sh
+          - -c
+          - |
+            pip install psycopg2-binary && \
+            pip install pillow && \
+            superset db upgrade && \
+            superset init && \
+            superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@example.com --password admin && \
+            superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
+        resources:
+          requests:
+            memory: "1Gi"  # Minimum memory needed to run the container
+            cpu: "500m"    # Minimum CPU needed to run the container
+          limits:
+            memory: "2Gi"  # Maximum memory the container can consume
+            cpu: "1"       # Maximum CPU the container can consume
+      volumes:
+      - name: superset-config
+        configMap:
+          name: superset-config
 ---
 apiVersion: v1
 kind: Service
@@ -59,7 +81,7 @@ metadata:
 data:
   superset_config.py: |
     import os
-    SQLALCHEMY_DATABASE_URI = "postgresql://superset:superset@postgres:5432/superset"
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://superset:superset@host.docker.internal:5432/superset"
     SECRET_KEY = os.getenv("SECRET_KEY", "your_secret_key")
 ---
 apiVersion: v1
@@ -68,4 +90,5 @@ metadata:
   name: superset-secret
 type: Opaque
 data:
-  secret_key: eW91cl9zZWNyZXRfa2V5  # Base64 encoded value of "your_secret_key"
+  # Base64 encoded value of "your_secret_key"
+  secret_key: eW91cl9zZWNyZXRfa2V5

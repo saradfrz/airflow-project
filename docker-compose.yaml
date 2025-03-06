@@ -1,5 +1,3 @@
-version: '3'
-
 networks:
   ndsnet:
     driver: bridge
@@ -63,25 +61,6 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
     command: scheduler
-    networks:
-      - ndsnet
-
-  superset:
-    image: apache/superset:latest
-    container_name: superset
-    depends_on:
-      - postgres
-    environment:
-      - SUPERSET_CONFIG_PATH=/etc/superset
-      - SUPERSET_DATABASE_URL=postgresql+psycopg2://superset:superset@postgres/superset
-    volumes:
-      - ./superset:/etc/superset
-    ports:
-      - "8088:8088"
-    command: >
-      sh -c "superset db upgrade &&
-      superset init &&
-      superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@example.com --password admin"
     networks:
       - ndsnet
 

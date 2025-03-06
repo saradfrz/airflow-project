@@ -40,11 +40,28 @@ make compose-down
 ```
 To deploy Kubernetes manifests:
 ```sh
-make k8s-apply
+make -f .makefile k8s-apply
 ```
 To delete Kubernetes resources:
 ```sh
-make k8s-delete
+make -f .makefile k8s-delete
+```
+
+### Debug
+
+```sh
+kubectl get pods -n default
+```
+
+```sh
+kubectl describe pod <superset_pod_name>
+kubectl logs <superset_pod_name>
+```
+
+```sh
+kubectl describe pod superset-7d6c7ccc88-q9vl2
+kubectl logs superset-54759c54fb-kfhdh 
+
 ```
 
 ## Services & Endpoints
@@ -59,7 +76,7 @@ make k8s-delete
 | Spark Master UI | Spark Cluster Monitoring      | `http://localhost:8082`  | True     |
 | Kafka           | Event Streaming Broker        | `http://localhost:9092`  | False    |
 | Metabase        | BI and Data Exploration       | `http://localhost:30300` | True     |
-| Apache Superset | Advanced Data Visualization   | `http://localhost:30088` | False    |
+| Apache Superset | Advanced Data Visualization   | `http://localhost:30088` | True     |
 | Docker Proxy    | Docker Daemon Proxy           | `http://localhost:2376`  | False    |
 
 
@@ -79,6 +96,8 @@ The system is deployed in a hybrid model using both Docker Compose and Kubernete
 - Implement CI/CD pipeline.
 - Add monitoring with Prometheus & Grafana.
 - Expand with additional machine learning pipelines.
+
+
 
 ## Contributors
 - **Sara Fernandez** - Project Maintainer
