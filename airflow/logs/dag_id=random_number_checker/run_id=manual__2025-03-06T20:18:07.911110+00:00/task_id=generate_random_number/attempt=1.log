@@ -1,0 +1,19 @@
+[2025-03-06T20:18:08.399+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-06T20:18:08.411+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: random_number_checker.generate_random_number manual__2025-03-06T20:18:07.911110+00:00 [queued]>
+[2025-03-06T20:18:08.417+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: random_number_checker.generate_random_number manual__2025-03-06T20:18:07.911110+00:00 [queued]>
+[2025-03-06T20:18:08.417+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-03-06T20:18:08.425+0000] {taskinstance.py:2890} INFO - Executing <Task(_PythonDecoratedOperator): generate_random_number> on 2025-03-06 20:18:07.911110+00:00
+[2025-03-06T20:18:08.431+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'random_number_checker', 'generate_random_number', 'manual__2025-03-06T20:18:07.911110+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/even_or_odd.py', '--cfg-path', '/tmp/tmpf6x8tmpe']
+[2025-03-06T20:18:08.433+0000] {standard_task_runner.py:105} INFO - Job 14: Subtask generate_random_number
+[2025-03-06T20:18:08.434+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=205) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-03-06T20:18:08.435+0000] {standard_task_runner.py:72} INFO - Started process 206 to run task
+[2025-03-06T20:18:08.465+0000] {task_command.py:467} INFO - Running <TaskInstance: random_number_checker.generate_random_number manual__2025-03-06T20:18:07.911110+00:00 [running]> on host f9047bb7b538
+[2025-03-06T20:18:08.537+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='random_number_checker' AIRFLOW_CTX_TASK_ID='generate_random_number' AIRFLOW_CTX_EXECUTION_DATE='2025-03-06T20:18:07.911110+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-03-06T20:18:07.911110+00:00'
+[2025-03-06T20:18:08.539+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-06T20:18:08.543+0000] {logging_mixin.py:190} INFO - Generated random number: 54
+[2025-03-06T20:18:08.543+0000] {python.py:240} INFO - Done. Returned value was: 54
+[2025-03-06T20:18:08.559+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-06T20:18:08.559+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=random_number_checker, task_id=generate_random_number, run_id=manual__2025-03-06T20:18:07.911110+00:00, execution_date=20250306T201807, start_date=20250306T201808, end_date=20250306T201808
+[2025-03-06T20:18:08.608+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-03-06T20:18:08.626+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-03-06T20:18:08.628+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

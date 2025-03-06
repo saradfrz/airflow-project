@@ -19,6 +19,7 @@ services:
       - ./initdb:/docker-entrypoint-initdb.d  # Mounting init scripts directory
     networks:
       - ndsnet
+    restart: always
 
   airflow-init:
     image: apache/airflow:2.10.5
@@ -27,8 +28,11 @@ services:
     environment:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__WEBSERVER__SECRET_KEY=my_secure_secret
     volumes:
-      - ./dags:/opt/airflow/dags
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
     command: >
       bash -c "airflow db init &&
       airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
@@ -43,13 +47,18 @@ services:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
       - AIRFLOW__WEBSERVER__EXPOSE_CONFIG=True
+      - AIRFLOW__WEBSERVER__SECRET_KEY=my_secure_secret
+      - AIRFLOW__WEBSERVER__BASE_URL=http://airflow-webserver:8080
     volumes:
-      - ./dags:/opt/airflow/dags
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
     ports:
       - "8080:8080"
     command: webserver
     networks:
       - ndsnet
+    restart: always
 
   airflow-scheduler:
     image: apache/airflow:2.10.5
@@ -58,11 +67,16 @@ services:
     environment:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__WEBSERVER__SECRET_KEY=my_secure_secret
     volumes:
-      - ./dags:/opt/airflow/dags
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
     command: scheduler
     networks:
       - ndsnet
+    restart: always
+
 
   minio:
     image: minio/minio:latest
