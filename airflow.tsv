@@ -1,0 +1,10 @@
+Por que usar a CLI do Airflow?	A CLI permite interagir diretamente com o Airflow, gerenciar DAGs, tarefas e o banco de metadados.
+Como acessar a CLI do Airflow?	Pode-se acessar via Docker executando: docker exec -it airflow-stock-market-airflow-scheduler-1 bash.
+O que faz o comando 'airflow db check'?	Verifica a integridade do banco de dados do Airflow.
+O que faz o comando 'airflow db clean'?	Remove metadados antigos do banco de dados do Airflow.
+O que faz o comando 'airflow db export-archived'?	Exporta metadados arquivados do banco de dados.
+O que faz o comando 'airflow db init'?	Inicializa o banco de dados do Airflow.
+Como executar parte de uma DAG para um intervalo de datas?	Utilizando o comando 'airflow dags backfill my_dag --reset-dagrun --rerun-failed-tasks --un-backwards -s 2024-01-01 -e 2024-01-XX'.
+Como re-sincronizar as DAGs no Airflow?	Executando o comando 'airflow dags reserialize'.
+Como listar todas as DAGs no Airflow?	Utilizando o comando 'airflow dags list'.
+Como testar uma task específica de uma DAG?	Executando 'airflow tasks test my_dag my_task 2024-01-01'.
