@@ -6,6 +6,8 @@ spec:
   selector:
     app: dbt
   ports:
-  - port: 8082        # New external port
-    targetPort: 8080  # Container's port remains unchanged
-  type: ClusterIP
+    - name: http
+      protocol: TCP
+      port: 9090       # Service port
+      targetPort: 7070 # Container port
+  type: NodePort

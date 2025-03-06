@@ -59,7 +59,7 @@ kubectl logs <superset_pod_name>
 ```
 
 ```sh
-kubectl describe pod superset-7d6c7ccc88-q9vl2
+kubectl describe pod dbt-6cb67fffb4-ppszz
 kubectl logs superset-54759c54fb-kfhdh 
 
 ```
@@ -96,7 +96,6 @@ The system is deployed in a hybrid model using both Docker Compose and Kubernete
 - Implement CI/CD pipeline.
 - Add monitoring with Prometheus & Grafana.
 - Expand with additional machine learning pipelines.
-
 
 
 ## Contributors
