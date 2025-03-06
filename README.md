@@ -1,9 +1,5 @@
 # Data Pipeline and Analytics Platform
 
-```
-make -f .makefile all-up
-```
-
 This project sets up a complete data pipeline and analytics platform using Docker Compose and Kubernetes. The platform includes data ingestion, transformation, storage, and visualization tools.
 
 ## Features
@@ -26,11 +22,11 @@ This project sets up a complete data pipeline and analytics platform using Docke
 ### Running the Services
 To start all services:
 ```sh
-make all-up
+make -f .makefile all-up
 ```
 To stop all services:
 ```sh
-make all-down
+make -f .makefile all-down
 ```
 To start only Docker Compose services:
 ```sh
